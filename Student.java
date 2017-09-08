@@ -1,266 +1,194 @@
-import java.util.Date;
-
-
-public class Student implements Comparable {
-
-	
-private int id;
-
-	private String fullName;
-
-	private Date birthDate;
-
-	private double avgMark;
-
-	
-public Student(int id, String fullName, Date birthDate, double avgMark) {
-
-		ID = id;
-	
-	this.fullName = fullName;
-
-		DOB = birthDate;
-
-		Marks = avgMark;
-
-	}
-
-	
-public int getId() {
-
-	return id;
-	
-}
-
-	
-public void setId(int id) {
-
-	ID = id;
-	
-}
-
-	
-public String getFullName() {
-
-	return fullName;
-
-	}
-
-	
-public void setFullName(String fullName) {
-
-	this.fullName = fullName;
-	
-}
-
-	public Date getBirthDate() 
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+class student
 {
-	
-return birthDate;
-	
-}
+static String[] name=new String[100];
+static String[]     dob=new String[100];
+static int[]   marks=new int[100];
 
+static int temp;
+public static void main(String args[])
+{
 
-	public void setBirthDate(Date birthDate)
- {
-	
-DOB= birthDate;
+int n=1;
 
-	}
+while(n!=0)
+{
 
-	
-public double getAvgMark() {
+    System.out.print(" 1.insert student details\n2.display student details \n 3.getstudent details by bithdate    \n 4.convert date to age   ");
+    Scanner sn=new Scanner(System.in);
 
-	return avgMark;
+    n=sn.nextInt();
 
-	}
+     if(n==1)
+      {
+    
+    setstudent();  
+      }
 
-	
-public void setAvgMark(double avgMark) {
-
-	Marks=avgMark;
-
-	}
-
-	
-@Override
-	
-public boolean equals(Object o) {
-
-	        
-     if (this == o) {
-        return true;
- 
-   }
-  
-  if (o == null) {
-      
-  return false;
+     if(n==2)
+      {
+       getstudent();
+      }
+     if(n==3)
+      {
+       getbybirthdate();
+      } 
+    if(n==4)
+      {
+      getbyage();
+       }
     
 }
-   
- if (getClass() != obj.getClass()) {
- 
-       return false;
-   
- }
-
-    Advertisement o = (Advertisement) o;
- 
-   return this.getId().equals(o.getId());
-
-}
-
-}
-	
+}//main function ends
 
 
-	@Override
-	
-public int hashCode() {
 
-	return getId().hashCode();
+ static void setstudent()
+  {
 
-	}
+    Scanner sn=new Scanner(System.in);
 
-	
-@Override
-	
-public int compareTo(Object o) {
+ System.out.print(" enter student name  ");
 
-	int cmp = getFullName().compareToIgnoreCase(g.getFullName());
- 
-      if (cmp != 0)
- return cmp;
-       
- return (getId() < g.getId() ? -1 : getId() == g.getId() ? 0 : 1);
-	}
-}
+   name[temp]=sn.next();
+
+ System.out.print(" enter student date of birth  ");
+
+   dob[temp]=sn.next();
 
 
-//
+ System.out.print(" enter student marks  ");
 
-//////
+   marks[temp]=sn.nextInt();
 
-public static void main(String[] args) {
 
-		
-		Scanner sc = new Scanner(System.in);
-	
-	int nstudents;
-	
-	String stName;
-		
-int stID;
-	
-	double stmarks;
-	
-	Date stdob;
 
-	
-	System.out.print("How many students would you like to enter?");
-	
-	nstudents = sc.nextInt();
+temp++;
+   }
 
-		sc.nextLine();
-	
-	ArrayList studentArray = new ArrayList(nstudents);
-
-		
-		for (int i = 0; i < nstudents; i++) {
-	
-		System.out.print("Enter name: ");
-	
-		stName = sc.nextLine();
-			
-System.out.print("Enter ID: ");
-		
-	stID = sc.nextInt();
-		
-	System.out.print("Enter marks:");
-
-			stMarks = sc.nextDouble();
-
-			sc.nextInt();
-		
-	System.out.print("Enter dob:");
-		
-	stDob = sc.nextLine();
-			
-studentArray.add(new Student( stID, stName,stDob,stMarks));
-
-		}
-		
-		
-
-		//System.out.println("Average is: " + Student.getAverage(studentArray));
-
-		for (ListIterator stIterator = studentArray.listIterator(); stIterator.hasNext(); ) 
-{
-	
-		Student st = (Student)stIterator.next();
-	
-		System.out.println(st);
-	
-	}
-	
-	
-		ListIterator studentIterator = studentArray.listIterator();
-	
-	
-		while (studentIterator.hasNext()) {
-
-			Student st = (Student)studentIterator.next();
-	
-		System.out.println(st);
-		
-}
-		
-
-		System.out.print("Who would you like to delete?");
-
-		String nameToRemove = sc.nextLine();
-
-	
-		Student tempStudent = new Student();
-		
-tempStudent.setName(nameToRemove);
-	
-	int stIndex = studentArray.indexOf(tempStudent);
-
-		studentArray.remove(stIndex);
-	
-	
-//		for (int i = 0; i < studentArray.size(); i++) 
+static void getstudent()
 {
 
-//			Student tempStudent = (Student)studentArray.get(i);
+for(int i=0;i<temp;i++)
+{
+System.out.print("\n\n");
+System.out.println("student name = "+name[i]);
+System.out.println("student date of birth = "+dob[i]);
+System.out.println("student marks = "+marks[i]);
+System.out.print("\n\n");
 
-//			if (tempStudent.getName().equals(nameToRemove)) {
 
-//				studentArray.remove(i);
-//			}
-//		}
-		
-		studentIterator = studentArray.listIterator();
-		
-		while (studentIterator.hasNext()) {
-			Student st = (Student)studentIterator.next();
-			System.out.println(st);
-		}
-		
-		
-		
-//		for (int j = 0; j < studentArray.size(); j++) {
-//			System.out.println(studentArray.get(j));
-//			
-//		}
-		
-		// compute and print out average GPA
-		// print out all students' name, ID and GPA
-		
-	}
+}
 
 }
 
 
+static void getbybirthdate()
+{
+String d=new String();
+Scanner sn=new Scanner(System.in);
+d=sn.next();
+for(int i=0;i<temp;i++)
+{
+
+//if(d.compareTo(dob[i])==0)
+if(d.equals(dob[i]))
+{
+System.out.print("\n\n");
+System.out.println("student name = "+name[i]);
+System.out.println("student date of birth = "+dob[i]);
+System.out.println("student marks = "+marks[i]);
+System.out.print("\n\n");
+}
+
+}
+
+}
+////////////////////
+
+static void getbyage()
+{
+for(int i=0;i<temp;i++)
+{
+String datetext = dob[i]; // Date in text
+
+
+try {
+      Calendar birth = new GregorianCalendar();
+      Calendar today = new GregorianCalendar();
+      int age = 0;
+      int factor = 0; //to correctly calculate age when birthday has not been yet celebrated
+      Date birthDate = new SimpleDateFormat("MM-dd-yyyy").parse(datetext);
+      Date currentDate = new Date(); //current date
+      
+      birth.setTime(birthDate);
+      today.setTime(currentDate);
+      
+      // check if birthday has been celebrated this year
+      if(today.get(Calendar.DAY_OF_YEAR) < birth.get(Calendar.DAY_OF_YEAR)) {
+            factor = -1; //birthday not celebrated
+      }
+      age = today.get(Calendar.YEAR) - birth.get(Calendar.YEAR) + factor;
+System.out.print("\n\n");
+System.out.println("student name = "+name[i]);
+System.out.println("student date of birth = "+dob[i]);
+System.out.println("student marks = "+marks[i]);
+System.out.println("AGE (years): "+age);
+
+System.out.print("\n\n");
+
+} catch (Exception e) {
+      System.out.println("Given date: "+datetext+ " not in expected format (Please enter a MM-DD-YYYY date)");
+}
+}
+}
+
+static void nearbybirth()
+{
+Scanner sn=new Scanner(System.in);
+int i=sn.nextInt();
+String abc=sn.next();
+Date date = new Date();
+		System.out.println("Todays date: "+date.toString());
+		//test addDays method
+		int k=i;
+		//while(i<=k){
+			Date newDate = addDays(date, i);
+			System.out.println("Java Date after adding "+i+" days: "+newDate.toString());
+			//i+=10;
+		//}
+		System.out.println("\n\n");
+		//test subtractDays method
+	
+	//	while(i<=k){
+	//		Date newDate = subtractDays(date, 10);
+	//		System.out.println("Java Date after subtracting "+i+" days: "+newDate.toString());
+	//		i+=10;
+	//	}
+
+	
+}
+public static Date addDays(Date date, int days) {
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, days);
+				
+		return cal.getTime();
+	}
+	
+	/**
+	 * subtract days to date in java
+	 * @param date
+	 * @param days
+	 * @return
+	 */
+	public static Date subtractDays(Date date, int days) {
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, -days);
+				
+		return cal.getTime();
+	}
+}//class ends
